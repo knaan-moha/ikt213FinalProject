@@ -27,6 +27,8 @@ def activate_selfie(cap, detector):
         
         # Read and display each frame
         ret, img = cap.read()
+        cv2.rectangle(img, (950, 00), (1500, 60), (100, 160, 100), -2)
+        cv2.putText(img, "Mode 3: Selfie", (950, 40), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
         hands, imge= detector.findHands(img)
         
         cv2.rectangle(imge, (0, 480), (300, 425), (255, 0, 0), -2)
@@ -81,7 +83,7 @@ def activate_selfie(cap, detector):
                     if (finger_up.count(1) == 5): 
                         cv2.rectangle(img, (0, 480), (300, 425), (255, 0, 0), -2)
                 
-                        cv2.putText(img, "LOL", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+                        cv2.putText(img, "text", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
                         TIMER = int(3)
                         break
                 else:

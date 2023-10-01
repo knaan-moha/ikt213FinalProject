@@ -5,6 +5,7 @@ from cvzone.HandTrackingModule import HandDetector
 
 import brightness_mode as br
 import selfie_mode as sm
+import volume_mode as vm
 MODE=0
 detector = HandDetector(detectionCon=0.9, maxHands=2)
   
@@ -29,8 +30,9 @@ while True:
     # if key pressed is q
     if(MODE==0):
          
-        cv2.rectangle(img, (0, 480), (300, 425), (255, 0, 0), -2)
-        cv2.putText(img, "Mode: "+str(MODE), (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+        
+        cv2.rectangle(img, (950, 00), (1500, 60), (100, 160, 100), -2)
+        cv2.putText(img, "Mode: "+str(MODE), (1000, 40), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
         
         cv2.imshow('a', img)
     
@@ -56,8 +58,9 @@ while True:
                     # Display countdown on each frame
                     # specify the font and draw the
                     # countdown using puttext
-                    cv2.rectangle(img, (0, 480), (300, 425), (255, 0, 0), -2)
-                    cv2.putText(img, str(TIMER), (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+                    
+                    cv2.rectangle(img, (0, 480), (500, 425), (255, 0, 0), -2)
+                    cv2.putText(img,"Activating mode "+str(finger_up.count(1))+" in "+str(TIMER), (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
                 
                     cv2.imshow('a', img)
                     cv2.waitKey(125)
@@ -81,7 +84,7 @@ while True:
                         cv2.rectangle(img, (0, 480), (300, 425), (255, 0, 0), -2)
                 
                         cv2.putText(img, "text", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
-                        TIMER = int(3)
+                        TIMER = int(2)
                        
                         break
                 else:
@@ -91,7 +94,7 @@ while True:
                     
                     MODE=finger_up.count(1)
     
-                    TIMER = int(3)
+                    TIMER = int(2)
             if(MODE==1): 
                 br.control_brightness(cap, detector)
                 MODE=0
@@ -101,6 +104,9 @@ while True:
             if(MODE==3):
                 sm.activate_selfie(cap, detector)
                 MODE=0
+            if(MODE==4):
+                vm.control_volume(cap, detector)
+                MODE=0
                 
             
        
@@ -109,20 +115,7 @@ while True:
         elif k == 27:
             break
     
-    # if(MODE!=1):
-         
-    #     cv2.rectangle(img, (0, 480), (300, 425), (255, 0, 0), -2)
-    #     cv2.putText(img, "Mode: "+str(MODE), (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
-        
-    #     cv2.imshow('a', img)
-    
-    #     # check for the key pressed
-    #     k = cv2.waitKey(125)
-       
-    #     # Press Esc to exit
-    #     if k == 27:
-    #         break
-  
+   
 # close the camera
 cap.release()
    
