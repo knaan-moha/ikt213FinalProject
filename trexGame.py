@@ -29,12 +29,8 @@ while True:
         if finger_up == [0, 0, 0, 0 ,0]: 
             
             cv2.putText(frame, "Finger count: 0", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
-            cv2.putText(frame, "Jumping ", (420, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
-            
-            test = pyautogui.press('space')
-            if test: 
-                print("pressed!")
-            
+            cv2.putText(frame, "Not Jumping ", (420, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+             
                    
         if finger_up == [0, 1, 0, 0 ,0]: 
             
@@ -58,8 +54,12 @@ while True:
            
         if finger_up == [1, 1, 1, 1 ,1]: 
             
+            
+            
             cv2.putText(frame, "Finger count: 5", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA) 
-            cv2.putText(frame, "Not Jumping ", (420, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+            cv2.putText(frame, "Jumping ", (420, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+            
+            pyautogui.press('space')
            
         
        #  print(finger_up)
