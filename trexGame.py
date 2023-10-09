@@ -17,7 +17,7 @@ while True:
     cv2.rectangle(imge, (0, 480), (300, 425), (255, 0, 0), -2)
     cv2.rectangle(imge, (640, 480), (400, 425), (255, 0, 0), -2)
     
-    # we check for the hand hands 
+    # we check for the  hands 
     if hands:
         
         for hand in hands: 
