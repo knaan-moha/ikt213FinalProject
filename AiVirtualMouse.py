@@ -43,6 +43,7 @@ def virtual_mouse():
     
         # get the tip of the in dex and middle fingers
         
+        
         if len(Land_mark_list) != 0: 
             
             finger_index_tip_x, finger_index_tip_y = Land_mark_list[8][1:]; 
@@ -74,25 +75,48 @@ def virtual_mouse():
         # finding the distance of both fingers 
         if open_fingers[1] == 1 and open_fingers[2] == 1:
             
-            length, img,  _ = detector.findDistance(8, 12, img)
+            length, img,  test = detector.findDistance(8, 12, img)
             # check if the length is less than 35 perform click
             
             if length<35: 
                 
                 cv2.circle(img, (finger_index_tip_x, finger_index_tip_y ), 15, (0,128, 0), cv2.FILLED)
                 pyautogui.click()
+           
+        
+        if open_fingers[0] == 1 and open_fingers[1] == 1:
+            length, img, lineInfo = detector.findDistance(8, 12, img)
+              
+            if length < 40:
+                cv2.circle(img, (lineInfo[4], lineInfo[5]),
+                       15, (0, 255, 0), cv2.FILLED)
+            elif lineInfo[2] < finger_index_tip_x:
+                cv2.putText(img, "Scrolling Up", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=3.0,
+                        color=(255, 255, 0), thickness=2)
+                pyautogui.scroll(3)  # Scroll right
+
+
+            if open_fingers[0] == 1 and open_fingers[1] == 0:
+                length, img, lineInfo = detector.findDistance(8, 12, img)
+
+            elif lineInfo[2] > finger_index_tip_x:
+                cv2.putText(img, "Scrolling Down", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=3.0,
+                        color=(255, 255, 0), thickness=2)
+                pyautogui.scroll(-3)
+            
+            
 
         ## scrolling 
         
-        def scrolling (): 
+        ##def scrolling (): 
             
-            if open_fingers.count(0) ==1 and open_fingers.count(1) == 0:
-                text_color = (0,0,255)
-                cv2.putText(img, "Scrolling Up", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=3.0, color=(255,255,0), thickness=2)
-                pyautogui.scroll(3)
+        if open_fingers.count(0) ==1 and open_fingers.count(1) == 0:
+                
+            cv2.putText(img, "Scrolling Up", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=3.0, color=(255,255,0), thickness=2)
+            pyautogui.scroll(3)
         
         # calling the scrolling function
-        scrolling()
+        ##scrolling()
         #? calculating the Rate frame
         current_frame_time = time.time();  
         fps = 1/(current_frame_time - prev_frame_time); 
