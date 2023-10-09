@@ -84,15 +84,15 @@ def virtual_mouse():
 
         ## scrolling 
         
-        def scrolling (): 
+        ##def scrolling (): 
             
-            if open_fingers.count(0) ==1 and open_fingers.count(1) == 0:
-                text_color = (0,0,255)
-                cv2.putText(img, "Scrolling Up", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=3.0, color=(255,255,0), thickness=2)
-                pyautogui.scroll(3)
+        if open_fingers.count(0) ==1 and open_fingers.count(1) == 0:
+                
+            cv2.putText(img, "Scrolling Up", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=3.0, color=(255,255,0), thickness=2)
+            pyautogui.scroll(3)
         
         # calling the scrolling function
-        scrolling()
+        ##scrolling()
         #? calculating the Rate frame
         current_frame_time = time.time();  
         fps = 1/(current_frame_time - prev_frame_time); 
