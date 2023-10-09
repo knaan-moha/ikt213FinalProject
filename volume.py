@@ -6,7 +6,6 @@ from cvzone.HandTrackingModule import HandDetector
 
 
 
-
 def test2_control_volume(img, finger_up):
           
         # https://www.geeksforgeeks.org/set-countdown-timer-to-capture-image-using-python-opencv/
