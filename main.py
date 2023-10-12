@@ -39,18 +39,18 @@ def main(cap, detector):
                     s.test_activate_selfie(cap, detector)
                   
                   
-                  v.test2_control_volume(hand_roi, finger_up) 
+                  v.test2_control_volume(img, finger_up) 
                   if finger_up==[1, 1, 0, 0, 0]:   
-                    b.test_control_brightness(hand_roi, detector, lmList1)
+                    b.test_control_brightness(img, detector, lmList1)
                  
                 
                   # v.test2_control_volume(img, finger_up) 
           
               if hands[0]["type"]=="Right": 
                 if finger_up.count(1)==5: 
-                   t.space_keystroke(hand_roi, finger_up)
+                   t.space_keystroke(img, finger_up)
                 else: 
-                  sc.scrolling(hand_roi, finger_up)
+                  sc.scrolling(img, finger_up)
 
         cv2.imshow('PC_Control_System', img)
         
