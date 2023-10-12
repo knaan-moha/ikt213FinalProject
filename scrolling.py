@@ -1,6 +1,7 @@
 import cv2
 import pyautogui
 
+
 def scrolling(img, finger_up): 
     print("here")
     if sum(finger_up[0:2]) == 2 and sum(finger_up[2:]) == 0:
