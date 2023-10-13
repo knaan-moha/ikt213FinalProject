@@ -7,8 +7,8 @@ def scrolling(img, finger_up):
     if sum(finger_up[0:2]) == 2 and sum(finger_up[2:]) == 0:
                         
                     
-                        cv2.putText(img, "Scrolling Up", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0,
-                                    color=(255, 255, 0), thickness=2)
+                       
+                        cv2.putText(img,"Scrolling  Up", (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
                         pyautogui.scroll(3) 
                         
     elif sum(finger_up[2:5]) == 3 and sum(finger_up[0:2]) == 0 :
