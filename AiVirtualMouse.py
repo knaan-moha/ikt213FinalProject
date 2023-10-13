@@ -5,6 +5,11 @@ import numpy as np
 import  pyautogui
 import time
 import HandTrackingModule as htm
+import fpsFile as fps
+
+
+
+
 
 # disabling the pyAutoGui when the mouse moves to corner. 
 pyautogui.FAILSAFE = False
@@ -97,12 +102,10 @@ def virtual_mouse():
                             
                     #? calculating the Rate frame
                     current_frame_time = time.time();  
-                    fps = 1/(current_frame_time - prev_frame_time); 
+                    fps.getFps(img, current_frame_time, prev_frame_time) 
                     prev_frame_time = current_frame_time; 
                     
-                    position = (20, 50)
-                    color = (255, 0, 0)
-                    cv2.putText(img, f"FPS: {str(int(fps))}", position, cv2.FONT_HERSHEY_PLAIN, 3, color, 3)
+                    
                     
         cv2.imshow("The frame", img )
         quite =  cv2.waitKey(1) & 0xFF; 
