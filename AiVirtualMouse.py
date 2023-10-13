@@ -70,30 +70,30 @@ def virtual_mouse():
                         pyautogui.moveTo(current_x, curent_y)
                         cv2.circle(img, (finger_index_tip_x, finger_index_tip_y ), 15, (128,0,128), cv2.FILLED)
                         prev_loc_x, prev_loc_y = current_x, curent_y
+                        cv2.putText(img,"Mouse", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
                     
                         # finding the distance of both fingers 
                     if open_fingers[1] == 1 and open_fingers[2] == 1:
                         length, img, _ = detector.findDistance(8, 12, img)
                         # check if the length is less than 35 perform click
                         if length<35: 
+                            cv2.putText(img,"Perform Click", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
                             cv2.circle(img, (finger_index_tip_x, finger_index_tip_y ), 15, (0,128, 0), cv2.FILLED)
                             pyautogui.click()
                         
                         #Performing scroll up by tracking the index finger and thumb
                     if sum(open_fingers[0:2]) == 2 and sum(open_fingers[2:]) == 0:
                         
-                    
-                        cv2.putText(img, "Scrolling Up", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0,
-                                    color=(255, 255, 0), thickness=2)
+                        cv2.putText(img,"Scrolling Up", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+                        pyautogui.scroll(3) 
                         pyautogui.scroll(3) 
                          #Performing scroll up by tracking the index finger and thumb
                     elif sum(open_fingers[2:5]) == 3 and sum(open_fingers[0:2]) == 0 :
-                                cv2.putText(img, "Scrolling Down", org=(20, 200), fontFace=cv2.FONT_HERSHEY_DUPLEX, fontScale=1.0,
-                                        color=(255, 255, 0), thickness=2)
+                                
+                                cv2.putText(img,"Scrolling Down", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
                                 pyautogui.scroll(-3)
                             
-                        
-                        
+ 
                             
                     #? calculating the Rate frame
                     current_frame_time = time.time();  
