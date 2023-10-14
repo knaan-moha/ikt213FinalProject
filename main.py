@@ -67,13 +67,13 @@ def main(cap, detector):
                  
           
               if hands[0]["type"]=="Right": 
-                # if finger_up.count(1)==5: 
-                #    t.space_keystroke(img, finger_up)
-                # else: 
-                  # sc.scrolling(img, finger_up)
-                  if(finger_up.count(1)==1):
+                if finger_up.count(1)==5: 
+                  t.space_keystroke(img, finger_up)
+                 
+                sc.scrolling(img, finger_up)
+                if finger_up.count(1)==1:
                      x, y=m.activate_mouse(img, hand_img,detector, finger_up, frame_reduction, web_cam_width, web_cam_height, screen_width, screen_height, smoothing, prev_loc_x, prev_loc_y)
-                  if x is not None and y is not None: 
+                if x is not None and y is not None: 
                      prev_loc_x=x
                      prev_loc_y=y
                #? calculating the Rate frame

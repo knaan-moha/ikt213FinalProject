@@ -35,6 +35,7 @@ def activate_mouse(img, hand_img, detector, fingers_up, frame_reduction, web_cam
         cv2.circle(img, (finger_index_tip_x, finger_index_tip_y ), 15, (128,0,128), cv2.FILLED)
         prev_loc_x, prev_loc_y = current_x, current_y
         cv2.putText(img,"Mouse", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+      
         if prev_loc_x>=0 and prev_loc_y>=0: 
            return prev_loc_x, prev_loc_y
         else:
