@@ -4,7 +4,7 @@ from cvzone.HandTrackingModule import HandDetector
 import selfie as s
 import volume as v
 import brightness as b
-import trex_game as t
+import space_keystroke as t
 import scrolling as sc
 import functions as f 
 import pyautogui
@@ -14,8 +14,6 @@ import time
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
 
 cap = cv2.VideoCapture(0)
-
-
 
 current_x, current_y = 0,  0; 
 prev_loc_x, prev_loc_y = 0, 0; 
@@ -80,8 +78,6 @@ def main(cap, detector):
         if k == 27:
             break
        
-
-
 
 if __name__ =="__main__": 
     main(cap, detector)

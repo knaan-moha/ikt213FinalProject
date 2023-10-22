@@ -5,6 +5,7 @@ import functions as f
 
 
 def test_activate_selfie(cap, detector, finger_up):
+   
     if finger_up==[0,1,1, 0, 0]:
         TIMER = int(3)
 
@@ -18,9 +19,7 @@ def test_activate_selfie(cap, detector, finger_up):
         # check for the key pressed
         k = cv2.waitKey(125)
 
-        # set the key for the countdown
-        # to begin. Here we set q
-        # if key pressed is q
+      
         if hands:
             lmlist = hands[0]
             
