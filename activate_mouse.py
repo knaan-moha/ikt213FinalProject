@@ -51,17 +51,7 @@ def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y):
             prev_loc_x, prev_loc_y = current_x, current_y
             cv2.putText(img,"Mouse", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
             
-                        # length, info, img = detector.findDistance(lmList[4][0:2], lmList[8][0:2], img, color=(255, 0, 255),
-                        #                             scale=10)
-       
-       
-                        # check if the length is less than 35 perform click
-                        # if length<35: 
-                        #     cv2.putText(img,"Perform Click", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-                        #     cv2.circle(img, (finger_index_tip_x, finger_index_tip_y ), 15, (0,128, 0), cv2.FILLED)
-                        #     pyautogui.click()
-                      
-                        
+        
         
             if prev_loc_x>=0 and prev_loc_y>=0: 
                 return prev_loc_x, prev_loc_y
