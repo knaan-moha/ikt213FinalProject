@@ -11,29 +11,19 @@ import pyautogui
 import activate_mouse as m
 import time 
 
-
-
-  # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
+# https://www.geeksforgeeks.org/python-opencv-selectroi-function/
 
 cap = cv2.VideoCapture(0)
 
 
 
 current_x, current_y = 0,  0; 
-
-# geting the screen width and height
-# screen_width, screen_height = pyautogui.size(); 
-#print(screen_height, screen_width)
-# defining the preview and current frame time 
-prev_frame_time = 0; 
 prev_loc_x, prev_loc_y = 0, 0; 
 
-#* defining the width and height of the webcam 
-# web_cam_width, web_cam_height = 640, 480; 
 
-# resizing the capture of the video
-# cap.set(3, web_cam_width); 
-# cap.set(4, web_cam_height)
+prev_frame_time = 0; 
+
+
 cap.set(3, 640); 
 cap.set(4, 480)
 
@@ -44,11 +34,10 @@ def main(cap, detector):
  
     prev_frame_time = 0; 
     while True: 
-        ret, img = cap.read()
+        _, img = cap.read()
         hands, hand_img = detector.findHands(img, draw=True, flipType=True)
         k= cv2.waitKey(1)
      
-        hand_roi=img
         if hands:   
             hand1 = hands[0]
             finger_up = detector.fingersUp(hand1)  
@@ -92,4 +81,8 @@ def main(cap, detector):
             break
        
 
-main(cap, detector)
+
+
+if __name__ =="__main__": 
+    main(cap, detector)
+

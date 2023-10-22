@@ -12,7 +12,6 @@ def control_volume(img, finger_up):
                 f.print_action(img, "Descreasing volume")  
                 pyautogui.press('volumedown', presses=1)
                 
-       
                 
             if finger_up== [0, 1, 1, 1, 1]:
                 f.print_action(img, "Increasing volume")  
@@ -22,10 +21,9 @@ def control_volume(img, finger_up):
             if finger_up==[0, 1, 0, 0, 1]: 
                 f.print_action(img, "Mute/Unmute Volume")  
 
-                pyautogui.press('volumemute', presses=1, interval=0.35)
+                pyautogui.press('volumemute', presses=1, interval=0.45)
                
            
         # check for the key pressed
         
                 
-
