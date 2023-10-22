@@ -7,9 +7,10 @@ import brightness as b
 import space_keystroke as t
 import scrolling as sc
 import functions as f 
-import pyautogui
+
 import activate_mouse as m
 import time 
+
 
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
 
@@ -65,7 +66,7 @@ def main(cap, detector):
                   coordinates = m.activate_mouse(img, hand_img, detector, finger_up, prev_loc_x, prev_loc_y)
                   if coordinates is not None:
                     prev_loc_x, prev_loc_y = coordinates
-                   
+                       
                except Exception as e:
                   print(f"An error occurred: {e}")
               
