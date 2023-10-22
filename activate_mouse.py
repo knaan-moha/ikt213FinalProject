@@ -16,9 +16,9 @@ def activate_mouse(img, hand_img, detector, fingers_up, frame_reduction, web_cam
         finger_index_tip_x, finger_index_tip_y = Land_mark_list[8][1:]; 
         middle_finger_tip_x,  middle_finger_tip_y = Land_mark_list[12][1:];
     
-        #print(open_fingers)
+        
     if fingers_up.count(1) == 1:
-        pass
+        
         # # drawing  a rectangle 
         cv2.rectangle(img, (frame_reduction, frame_reduction), (web_cam_width-frame_reduction, web_cam_height- frame_reduction), (0, 128, 0), 3)
 

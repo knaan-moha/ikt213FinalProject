@@ -4,10 +4,10 @@ import time
 from cvzone.HandTrackingModule import HandDetector
 import functions as f 
 
-
+ # https://www.geeksforgeeks.org/set-countdown-timer-to-capture-image-using-python-opencv/
 def control_volume(img, finger_up):
           
-        # https://www.geeksforgeeks.org/set-countdown-timer-to-capture-image-using-python-opencv/
+       
             if finger_up== [0, 0, 1 ,1, 1]:
                 f.print_action(img, "Descreasing volume")  
                 pyautogui.press('volumedown', presses=1)
@@ -28,3 +28,4 @@ def control_volume(img, finger_up):
         # check for the key pressed
         
                 
+
