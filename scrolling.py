@@ -4,8 +4,7 @@ import functions as f
 
 def scrolling(img, finger_up): 
 
-    if sum(finger_up[0:2]) == 2 and sum(finger_up[2:]) == 0:
-                        
+    if sum(finger_up[0:2]) == 2 and sum(finger_up[2:]) == 0:                 
                     
                         f.print_action(img, "Scrolling Up")
                         
