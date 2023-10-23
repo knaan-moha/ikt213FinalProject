@@ -1,10 +1,10 @@
-from cvzone.HandTrackingModule import HandDetector
+from HandTrackingModuleWindows import HandDetector
 import cv2
 import screen_brightness_control as sbc
 import functions as f 
 # https://github.com/cvzone/cvzone
 
-
+import platform 
 def control_brightness(img, detector, lmList, finger_up):
     """
      Performs brigthness control.
@@ -13,7 +13,8 @@ def control_brightness(img, detector, lmList, finger_up):
      :lmList: List of detected hand landmarks. 
      :param fingers_up: Number of raised fingers.
      """
-    if finger_up==[1, 1, 0, 0, 0]:    
+     
+    if finger_up==[1, 1, 0, 0, 0] and platform.system()=="Windows":    
         length, info, img = detector.findDistance(lmList[4][0:2], lmList[8][0:2], img, color=(255, 0, 255),
                                                     scale=10)
        

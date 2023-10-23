@@ -1,8 +1,9 @@
 import cv2
 import time
-from cvzone.HandTrackingModule import HandDetector
+from HandTrackingModuleWindows import HandDetector
 import functions as f 
 
+# ! write doc string for this: 
 
 def test_activate_selfie(cap, detector, finger_up):
    
