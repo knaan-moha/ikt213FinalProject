@@ -1,6 +1,6 @@
 import cv2
 
-from HandTrackingModuleWindows import HandDetector
+
 import selfie as s
 import volume as v
 import brightness as b
