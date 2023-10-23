@@ -1,13 +1,11 @@
 import cv2
-import time
+
 from cvzone.HandTrackingModule import HandDetector
 import selfie as s
 import volume as v
 import brightness as b
 import trex_game as t
 import scrolling as sc
-
-
 
 
 detector = HandDetector(detectionCon=0.9, maxHands=2)
