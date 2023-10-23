@@ -7,15 +7,15 @@ import main as m
 
 
 def manage_window(img, fingers_up): 
-    print(time.time()-m.timer)
+  
     if time.time()-m.timer >=3:
       
         if fingers_up==[0,1,0,0,1]: 
             pyautogui.click()
             if platform.system()=="Windows":
-                pyautogui.keyDown("win")
-                pyautogui.press("down")
-                pyautogui.keyUp("win")
+                pyautogui.hotkey('win', 'down')
+                pyautogui.keyUp('win')
+                pyautogui.keyUp('down')
             elif platform.system()=="macOS":
                 pyautogui.hotkey("command", "m")
             m.timer=time.time()
@@ -24,8 +24,11 @@ def manage_window(img, fingers_up):
         if fingers_up==[0,1,1,1,0]:
             pyautogui.click()
             if platform.system()=="Windows":
-             pyautogui.hotkey("alt", "f4")
+             pyautogui.hotkey('alt', 'f4')
+             pyautogui.keyUp('alt')
+             pyautogui.click()
             elif platform.system()=="macOS":
              pyautogui.hotkey("command", "w")
+             pyautogui.click()
             m.timer=time.time()
        

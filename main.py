@@ -10,7 +10,7 @@ import functions as f
 import activate_mouse as m
 import time 
 import window as win
-
+import platform as pl
 
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
 
@@ -29,64 +29,63 @@ timer=time.time()
 detector = HandDetector(detectionCon=0.9,maxHands=1) 
 
 def main(cap, detector): 
-    global prev_loc_x
-    global prev_loc_y    
-    global timer    
-    
- 
-    prev_frame_time = 0; 
-    while True: 
-        _, img = cap.read()
-        hands, hand_img = detector.findHands(img, draw=True, flipType=True)
-        k= cv2.waitKey(1)
-     
-        if hands:   
-            hand1 = hands[0]
-            finger_up = detector.fingersUp(hand1)  
-            lmList1=hand1["lmList"]
-            x, y, w, h = hand1["bbox"]
+    try: 
+      global prev_loc_x
+      global prev_loc_y    
+      global timer    
+      
   
-            # https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python
-            hand_roi =img[y:y+h, x:x+w]
-        
-            if len(hands)==1:          
-              if hands[0]["type"]=="Left":  
-                                            
-                  s.test_activate_selfie(cap, detector, finger_up)
-              
-                  v.control_volume(img, finger_up) 
-                  
-                  b.control_brightness(img, detector, lmList1, finger_up)
+      prev_frame_time = 0; 
+      while True: 
+          _, img = cap.read()
+          hands, hand_img = detector.findHands(img, draw=True, flipType=True)
+          k= cv2.waitKey(1)
+      
+          if hands:   
+              hand1 = hands[0]
+              finger_up = detector.fingersUp(hand1)  
+              lmList1=hand1["lmList"]
+              x, y, w, h = hand1["bbox"]
     
-                 
-              if hands[0]["type"]=="Right": 
-              
-               t.space_keystroke(img, finger_up)
+              # https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python
+            
+          
+              if len(hands)==1:          
+                if hands[0]["type"]=="Left":  
+                                              
+                    s.test_activate_selfie(cap, detector, finger_up)
+                
+                    v.control_volume(img, finger_up) 
+                    
+                    b.control_brightness(img, detector, lmList1, finger_up)
+      
                   
-               sc.scrolling(img, finger_up)
-               try:
-                 win.manage_window(img, finger_up)
-               except Exception as e:
-                  print(f"An error occurred: {e}")
-              
-               try:
+                if hands[0]["type"]=="Right": 
+            
+                    
+                  t.space_keystroke(img, finger_up)
+                      
+                  sc.scrolling(img, finger_up)
+                  
+                  win.manage_window(img, finger_up)
+                
                   coordinates = m.activate_mouse(img, hand_img, detector, finger_up, prev_loc_x, prev_loc_y)
                   if coordinates is not None:
-                    prev_loc_x, prev_loc_y = coordinates
-                       
-               except Exception as e:
-                  print(f"An error occurred: {e}")
-              
-        current_frame_time = time.time();   
-        f.get_fps(img, current_frame_time,
-                   prev_frame_time) 
-        prev_frame_time = current_frame_time; 
+                      prev_loc_x, prev_loc_y = coordinates
+                        
+                
+                
+          current_frame_time = time.time();   
+          f.get_fps(img, current_frame_time,
+                    prev_frame_time) 
+          prev_frame_time = current_frame_time; 
 
-        cv2.imshow('PC_Control_System', img)
-        
-        if k == 27:
-            break
-       
+          cv2.imshow('PC_Control_System', img) 
+          
+          if k == 27:
+              break
+    except Exception as e:
+                  print(f"An error occurred: {e}") 
 
 if __name__ =="__main__": 
     main(cap, detector)
