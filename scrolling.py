@@ -13,12 +13,11 @@ def scrolling(img, fingers_up):
     if sum(fingers_up[0:2]) == 2 and sum(fingers_up[2:]) == 0:                 
                     
                         f.print_action(img, "Scrolling Up")
-                        
                         pyautogui.scroll(3) 
                         
     elif sum(fingers_up[2:5]) == 3 and sum(fingers_up[0:2]) == 0 :
+                                
                                 f.print_action(img, "Scrolling Down")
-                        
                                 pyautogui.scroll(-3)
 
 

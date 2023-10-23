@@ -1,7 +1,6 @@
 import pyautogui
 import cv2
 import time
-from cvzone.HandTrackingModule import HandDetector
 import functions as f 
 
  # https://www.geeksforgeeks.org/set-countdown-timer-to-capture-image-using-python-opencv/

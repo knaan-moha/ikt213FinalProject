@@ -1,6 +1,6 @@
 import cv2 
 import pyautogui
-from cvzone.HandTrackingModule import HandDetector
+
 import functions as f
 
 

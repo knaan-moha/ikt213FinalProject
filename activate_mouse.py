@@ -1,5 +1,5 @@
 import cv2
-from cvzone.HandTrackingModule import HandDetector
+from HandTrackingModuleWindows import HandDetector
 import HandTrackingModule as htm
 import numpy as np 
 import  pyautogui

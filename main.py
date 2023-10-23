@@ -1,6 +1,6 @@
 import cv2
 
-from cvzone.HandTrackingModule import HandDetector
+from HandTrackingModuleWindows import HandDetector
 import selfie as s
 import volume as v
 import brightness as b
@@ -55,7 +55,7 @@ def main(cap, detector):
                   s.test_activate_selfie(cap, detector, finger_up)
               
                   v.control_volume(img, finger_up) 
-                 
+                  
                   b.control_brightness(img, detector, lmList1, finger_up)
     
                  
