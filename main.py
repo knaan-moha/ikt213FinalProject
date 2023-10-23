@@ -10,7 +10,7 @@ import functions as f
 import activate_mouse as m
 import time 
 import window as win
-
+import platform as pl
 
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
 
@@ -82,7 +82,7 @@ def main(cap, detector):
                    prev_frame_time) 
         prev_frame_time = current_frame_time; 
 
-        cv2.imshow('PC_Control_System', img)
+        cv2.imshow('PC_Control_System', img) 
         
         if k == 27:
             break
