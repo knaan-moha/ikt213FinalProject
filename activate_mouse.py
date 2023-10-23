@@ -46,7 +46,9 @@ def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y):
             current_y = prev_loc_y +(y3 -prev_loc_y)/smoothing
 
             # # Move the mouse cursor to the new coordinates
+
             pyautogui.moveTo(current_x, current_y)
+         
             cv2.circle(img, (finger_index_tip_x, finger_index_tip_y ), 15, (128,0,128), cv2.FILLED)
             prev_loc_x, prev_loc_y = current_x, current_y
             cv2.putText(img,"Mouse", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
@@ -57,7 +59,8 @@ def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y):
                 return prev_loc_x, prev_loc_y
             else:
                 return x_b, y_b
-        elif fingers_up.count(1)==2:
+            
+        if fingers_up.count(1)==2:
                         # length, img, _ = detector.findDistance(Land_mark_list[8][1:], Land_mark_list[12][1:], img)
                         length, info, img = detector.findDistance(Land_mark_list[8][1:], Land_mark_list[12][1:], img, color=(255, 0, 255),
                                                     scale=10)
