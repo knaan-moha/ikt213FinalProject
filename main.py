@@ -8,6 +8,8 @@ import trex_game as t
 import scrolling as sc
 
 
+
+
 detector = HandDetector(detectionCon=0.9, maxHands=2)
 
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
