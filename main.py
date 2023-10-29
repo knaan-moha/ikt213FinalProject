@@ -111,7 +111,7 @@ def main(cap, detector):
 
 
 
-if __name__ !="__main__": 
+if __name__ =="__main__": 
     main(cap, detector)
 
 
