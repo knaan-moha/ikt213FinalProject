@@ -28,6 +28,7 @@ prev_frame_time = 0;
 cap.set(3, 640); 
 cap.set(4, 480)
 
+# boolean to display the boudning box of the hand 
 showBBox =True
 
 #timers used for countdowns to avoid redundant activation of the invoked commands 
@@ -43,9 +44,9 @@ detector = HandDetector(detectionCon=0.9,maxHands=1)
 def main(cap, detector): 
     try: 
       global prev_loc_x
-      global prev_loc_y    
-      global timer    
+      global prev_loc_y     
       global showBBox 
+      global timer_window, timer_click, timer_selfie, timer_volume
       showBBox =True            
      
       prev_frame_time = 0; 
