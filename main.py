@@ -22,11 +22,14 @@ prev_loc_x, prev_loc_y = 0, 0;
 
 prev_frame_time = 0; 
 
-
 cap.set(3, 640); 
 cap.set(4, 480)
+
+showHand=True
+
 timer=time.time()    
 timer_click=time.time()
+timer_selfie=time.time()
 detector = HandDetector(detectionCon=0.9,maxHands=1) 
 
 def main(cap, detector): 
@@ -34,39 +37,42 @@ def main(cap, detector):
       global prev_loc_x
       global prev_loc_y    
       global timer    
-      
+      global showHand
+      showHand=True            
+     
       prev_frame_time = 0; 
       while True: 
+         
           _, img = cap.read()
-          hands, hand_img = detector.findHands(img, draw=True, flipType=True)
+          hands, hand_img = detector.findHands(img, draw=showHand, flipType=True)
           k= cv2.waitKey(1)
       
           if hands:   
-              hand1 = hands[0]
-              finger_up = detector.fingersUp(hand1)  
-              lmList1=hand1["lmList"]
-              x, y, w, h = hand1["bbox"]
+              lmList = hands[0]
+              fingers_up = detector.fingersUp(lmList)  
+              lmList=lmList["lmList"]
+              x, y, w, h = lmList["bbox"]
             
               if len(hands)==1:          
                 if hands[0]["type"]=="Left":  
                                               
-                    s.test_activate_selfie(cap, detector, finger_up)
+                    showHand=s.activate_selfie(img, fingers_up)
                 
-                    v.control_volume(img, finger_up) 
+                    v.control_volume(img, fingers_up) 
                     
-                    b.control_brightness(img, detector, lmList1, finger_up)
+                    b.control_brightness(img, detector, lmList, fingers_up)
       
                   
                 if hands[0]["type"]=="Right": 
             
                     
-                  t.space_keystroke(img, finger_up)
+                  t.space_keystroke(img, fingers_up)
                       
-                  sc.scrolling(img, finger_up)
+                  sc.scrolling(img, fingers_up)
                   
-                  win.manage_window(img, finger_up)
+                  win.manage_window(img, fingers_up)
                 
-                  coordinates = m.activate_mouse(img, hand_img, detector, finger_up, prev_loc_x, prev_loc_y)
+                  coordinates = m.activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y)
                   if coordinates is not None:
                       prev_loc_x, prev_loc_y = coordinates
                         
