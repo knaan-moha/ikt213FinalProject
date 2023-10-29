@@ -5,7 +5,8 @@ import numpy as np
 import  pyautogui
 import time
 import HandTrackingModule as htm
-
+import main as m 
+import functions as f 
 smoothing  =  4; 
 frame_reduction = 100; 
 web_cam_width, web_cam_height = 640, 480; 
@@ -64,8 +65,13 @@ def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y):
                         # length, img, _ = detector.findDistance(Land_mark_list[8][1:], Land_mark_list[12][1:], img)
                         length, info, img = detector.findDistance(Land_mark_list[8][1:], Land_mark_list[12][1:], img, color=(255, 0, 255),
                                                     scale=10)
-                        if length<35: 
+                        if length<35 and time.time()-m.timer_click>=3: 
                             cv2.putText(img,"Perform Click", (20, 200), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
                             cv2.circle(img, (finger_index_tip_x, finger_index_tip_y ), 15, (0,128, 0), cv2.FILLED)
                             pyautogui.click()
+                            m.timer_click=time.time()
+                        elif length<35 and time.time()-m.timer_click<3: 
+                            
+                            f.print_action(img, "Click will be available in: "+f'{4-(time.time()-m.timer_click):.0f}')
+                        
       
