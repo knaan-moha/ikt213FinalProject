@@ -1,6 +1,6 @@
 import cv2
 
-
+from HandTrackingModuleWindows import HandDetector
 import selfie as s
 import volume as v
 import brightness as b
@@ -13,7 +13,7 @@ import window as win
 import platform as pl
 
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
-
+# https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python
 cap = cv2.VideoCapture(0)
 
 current_x, current_y = 0,  0; 
@@ -26,6 +26,7 @@ prev_frame_time = 0;
 cap.set(3, 640); 
 cap.set(4, 480)
 timer=time.time()    
+timer_click=time.time()
 detector = HandDetector(detectionCon=0.9,maxHands=1) 
 
 def main(cap, detector): 
@@ -34,7 +35,6 @@ def main(cap, detector):
       global prev_loc_y    
       global timer    
       
-  
       prev_frame_time = 0; 
       while True: 
           _, img = cap.read()
@@ -46,10 +46,7 @@ def main(cap, detector):
               finger_up = detector.fingersUp(hand1)  
               lmList1=hand1["lmList"]
               x, y, w, h = hand1["bbox"]
-    
-              # https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python
             
-          
               if len(hands)==1:          
                 if hands[0]["type"]=="Left":  
                                               
@@ -73,7 +70,6 @@ def main(cap, detector):
                   if coordinates is not None:
                       prev_loc_x, prev_loc_y = coordinates
                         
-                
                 
           current_frame_time = time.time();   
           f.get_fps(img, current_frame_time,
