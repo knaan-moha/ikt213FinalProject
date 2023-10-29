@@ -2,7 +2,7 @@ import cv2
 import pyautogui
 import functions as f
 
-def scrolling(img, fingers_up): 
+def perform_scrolling(img, fingers_up): 
     """
      Performs scrolling up and down
      :param img: Frame for displaying the invoked command (i.e. scolling up or down).

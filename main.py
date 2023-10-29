@@ -76,7 +76,7 @@ def main(cap, detector):
         
                 t.space_keystroke(img, fingers_up)
                     
-                sc.scrolling(img, fingers_up)
+                sc.perform_scrolling(img, fingers_up)
                 
                 win.manage_window(img, fingers_up)
             
