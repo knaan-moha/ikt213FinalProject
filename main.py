@@ -16,7 +16,10 @@ import platform as pl
 # https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python
 cap = cv2.VideoCapture(0)
 
+
+# variables used to store the current location of the cursor 
 current_x, current_y = 0,  0; 
+# variables uses to store the previous location of the cursor 
 prev_loc_x, prev_loc_y = 0, 0; 
 
 
@@ -27,10 +30,14 @@ cap.set(4, 480)
 
 showBBox =True
 
+#timers used for countdowns to avoid redundant activation of the invoked commands 
 timer_window=time.time()    
 timer_click=time.time()
 timer_selfie=time.time()
 timer_volume=time.time()
+
+
+# an instance of the HandDetector class that is used to detect a hand within an image 
 detector = HandDetector(detectionCon=0.9,maxHands=1) 
 
 def main(cap, detector): 
@@ -49,32 +56,32 @@ def main(cap, detector):
           k= cv2.waitKey(1)
       
           if hands:   
-              detected_hand = hands[0]
-              fingers_up = detector.fingersUp(detected_hand)  
-              lmList=detected_hand["lmList"]
-              x, y, w, h = detected_hand["bbox"]
+            detected_hand = hands[0]
+            fingers_up = detector.fingersUp(detected_hand)  
+            lmList=detected_hand["lmList"]
+            x, y, w, h = detected_hand["bbox"]
             
-              if len(hands)==1:          
-                if hands[0]["type"]=="Left":  
-                                              
-                    showBBox =s.activate_selfie(img, fingers_up)
+                       
+            if hands[0]["type"]=="Left":  
+                                            
+                showBBox =s.activate_selfie(img, fingers_up)
+            
+                v.control_volume(img, fingers_up) 
                 
-                    v.control_volume(img, fingers_up) 
+                b.control_brightness(img, detector, lmList, fingers_up)
+    
+                
+            if hands[0]["type"]=="Right": 
+        
+                t.space_keystroke(img, fingers_up)
                     
-                    b.control_brightness(img, detector, lmList, fingers_up)
-      
-                  
-                if hands[0]["type"]=="Right": 
-            
-                  t.space_keystroke(img, fingers_up)
-                      
-                  sc.scrolling(img, fingers_up)
-                  
-                  win.manage_window(img, fingers_up)
+                sc.scrolling(img, fingers_up)
                 
-                  coordinates = m.activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y)
-                  if coordinates is not None:
-                      prev_loc_x, prev_loc_y = coordinates
+                win.manage_window(img, fingers_up)
+            
+                coordinates = m.activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y)
+                if coordinates is not None:
+                    prev_loc_x, prev_loc_y = coordinates
                         
                 
           current_frame_time = time.time();   
@@ -88,6 +95,8 @@ def main(cap, detector):
               break
     except Exception as e:
                   print(f"An error occurred: {e}") 
+
+
 
 if __name__ =="__main__": 
     main(cap, detector)
