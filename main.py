@@ -7,6 +7,9 @@ from HandTrackingModuleWindows import HandDetector
 sys.path.append(os.path.dirname(os.path.abspath("utilities")))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath("utilities")), 'utilities'))
 
+#sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "utilities"))
+
+
 import utilities.selfie as s
 import utilities.volume as v
 import utilities.brightness as b
@@ -87,7 +90,7 @@ def main(cap, detector):
 
                 t.space_keystroke(img, fingers_up)
                     
-                sc.perform_scrolling(img, fingers_up)
+                sc.perform_scrolling(img, lmList,fingers_up)
                 
                 win.manage_window(img, fingers_up)
             
