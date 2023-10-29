@@ -66,10 +66,12 @@ def main(cap, detector):
                     
                   t.space_keystroke(img, finger_up)
                       
-                  sc.scrolling(img, finger_up)
+                  sc.scrolling(img, lmList1,finger_up)
                   
-                  ##win.manage_window(img, finger_up)
-                  sc.macMinimize(img, finger_up); 
+                  win.manage_window(img, finger_up)
+                  
+                  
+                 
                   
                 
                   coordinates = m.activate_mouse(img, hand_img, detector, finger_up, prev_loc_x, prev_loc_y)
@@ -93,3 +95,4 @@ def main(cap, detector):
 if __name__ =="__main__": 
     main(cap, detector)
 
+     
