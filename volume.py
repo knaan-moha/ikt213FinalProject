@@ -2,6 +2,7 @@ import pyautogui
 import cv2
 import time
 import functions as f 
+import main as m 
 
  # https://www.geeksforgeeks.org/set-countdown-timer-to-capture-image-using-python-opencv/
 def control_volume(img, fingers_up):
@@ -21,8 +22,10 @@ def control_volume(img, fingers_up):
         f.print_action(img, "Increasing volume")  
         pyautogui.press('volumeup', presses=1)
         
+    if  fingers_up==[0, 1, 0, 0, 1] and time.time()-m.timer_volume>=3:
 
-    if fingers_up==[0, 1, 0, 0, 1]: 
         f.print_action(img, "Mute/Unmute Volume")  
-
-        pyautogui.press('volumemute', presses=1, interval=0.60)
+        pyautogui.press('volumemute', presses=1)
+        m.timer_volume=time.time()
+    elif fingers_up==[0, 1, 0, 0, 1] and time.time()-m.timer_volume<3: 
+         f.print_action(img, "Mute/Unmute function available in "+str(4-(time.time()-m.timer_volume))[0])

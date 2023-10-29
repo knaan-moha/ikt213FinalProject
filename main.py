@@ -25,11 +25,12 @@ prev_frame_time = 0;
 cap.set(3, 640); 
 cap.set(4, 480)
 
-showHand=True
+showBBox =True
 
-timer=time.time()    
+timer_window=time.time()    
 timer_click=time.time()
 timer_selfie=time.time()
+timer_volume=time.time()
 detector = HandDetector(detectionCon=0.9,maxHands=1) 
 
 def main(cap, detector): 
@@ -37,14 +38,14 @@ def main(cap, detector):
       global prev_loc_x
       global prev_loc_y    
       global timer    
-      global showHand
-      showHand=True            
+      global showBBox 
+      showBBox =True            
      
       prev_frame_time = 0; 
       while True: 
          
           _, img = cap.read()
-          hands, hand_img = detector.findHands(img, draw=showHand, flipType=True)
+          hands, hand_img = detector.findHands(img, draw=showBBox , flipType=True)
           k= cv2.waitKey(1)
       
           if hands:   
@@ -56,7 +57,7 @@ def main(cap, detector):
               if len(hands)==1:          
                 if hands[0]["type"]=="Left":  
                                               
-                    showHand=s.activate_selfie(img, fingers_up)
+                    showBBox =s.activate_selfie(img, fingers_up)
                 
                     v.control_volume(img, fingers_up) 
                     
@@ -65,7 +66,6 @@ def main(cap, detector):
                   
                 if hands[0]["type"]=="Right": 
             
-                    
                   t.space_keystroke(img, fingers_up)
                       
                   sc.scrolling(img, fingers_up)
