@@ -23,6 +23,7 @@ current_x, current_y = 0,  0;
 prev_loc_x, prev_loc_y = 0, 0; 
 
 
+
 prev_frame_time = 0; 
 
 cap.set(3, 640); 
@@ -43,26 +44,29 @@ detector = HandDetector(detectionCon=0.9,maxHands=1)
 
 def main(cap, detector): 
     try: 
-      global prev_loc_x
-      global prev_loc_y     
+    #   mark variables as globals so that they are not perceived as local variables by the interpreter 
+      global prev_loc_x, prev_loc_y     
+      global prev_frame_time
       global showBBox 
       global timer_window, timer_click, timer_selfie, timer_volume
       showBBox =True            
-     
-      prev_frame_time = 0; 
+      
+       
       while True: 
          
           _, img = cap.read()
+        #   find hands and draw the bouding box
           hands, hand_img = detector.findHands(img, draw=showBBox , flipType=True)
           k= cv2.waitKey(1)
-      
+        #   if hand is detected 
           if hands:   
             detected_hand = hands[0]
+            # get the number of raised fingers 
             fingers_up = detector.fingersUp(detected_hand)  
             lmList=detected_hand["lmList"]
             x, y, w, h = detected_hand["bbox"]
             
-                       
+            # If the detected hand is the left hand 
             if hands[0]["type"]=="Left":  
                                             
                 showBBox =s.activate_selfie(img, fingers_up)
@@ -71,9 +75,9 @@ def main(cap, detector):
                 
                 b.control_brightness(img, detector, lmList, fingers_up)
     
-                
+            # if the detected hand is the right hand 
             if hands[0]["type"]=="Right": 
-        
+
                 t.space_keystroke(img, fingers_up)
                     
                 sc.perform_scrolling(img, fingers_up)
@@ -82,9 +86,10 @@ def main(cap, detector):
             
                 coordinates = m.activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y)
                 if coordinates is not None:
+                    # store the cursor coordinates 
                     prev_loc_x, prev_loc_y = coordinates
                         
-                
+           
           current_frame_time = time.time();   
           f.get_fps(img, current_frame_time,
                     prev_frame_time) 
@@ -95,7 +100,7 @@ def main(cap, detector):
           if k == 27:
               break
     except Exception as e:
-                  print(f"An error occurred: {e}") 
+                  print(f"Error: {e}") 
 
 
 
