@@ -63,6 +63,7 @@ def main(cap, detector):
             detected_hand = hands[0]
             # get the number of raised fingers 
             fingers_up = detector.fingersUp(detected_hand)  
+            # get the hand landmarks associated with the detected hand 
             lmList=detected_hand["lmList"]
             x, y, w, h = detected_hand["bbox"]
             
