@@ -1,4 +1,5 @@
 import cv2
+from HandTrackingModuleWindows import HandDetector
 
 
 import selfie as s
@@ -67,7 +68,9 @@ def main(cap, detector):
                       
                   sc.scrolling(img, finger_up)
                   
-                  win.manage_window(img, finger_up)
+                  ##win.manage_window(img, finger_up)
+                  sc.macMinimize(img, finger_up); 
+                  
                 
                   coordinates = m.activate_mouse(img, hand_img, detector, finger_up, prev_loc_x, prev_loc_y)
                   if coordinates is not None:

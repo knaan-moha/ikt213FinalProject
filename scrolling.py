@@ -2,6 +2,14 @@ import cv2
 import pyautogui
 import functions as f
 
+import platform
+
+import pygetwindow
+
+system_platform = platform.system()
+
+active_window  = pygetwindow.getActiveWindow()
+
 def scrolling(img, fingers_up): 
     """
      Performs scrolling up and down
@@ -22,4 +30,17 @@ def scrolling(img, fingers_up):
 
 
 
+
+def macMinimize(img, fingers_up):
+    
+    
+    if fingers_up==[0,1,0,0,1]:
+        if system_platform == "Darwin": 
+            f.print_action(img, "minimize window")
+            pyautogui.click()
+            pyautogui.hotkey("command", "w")
+
+        
+           
+    
 

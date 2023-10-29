@@ -16,8 +16,9 @@ def manage_window(img, fingers_up):
                 pyautogui.hotkey('win', 'down')
                 pyautogui.keyUp('win')
                 pyautogui.keyUp('down')
-            elif platform.system()=="macOS":
+            elif platform.system()=="Darwin":
                 pyautogui.hotkey("command", "m")
+                print("Testes! ")
             m.timer=time.time()
            
             
@@ -27,7 +28,7 @@ def manage_window(img, fingers_up):
              pyautogui.hotkey('alt', 'f4')
              pyautogui.keyUp('alt')
              pyautogui.click()
-            elif platform.system()=="macOS":
+            elif platform.system()=="Darwin":
              pyautogui.hotkey("command", "w")
              pyautogui.click()
             m.timer=time.time()
