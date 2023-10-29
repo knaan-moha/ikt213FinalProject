@@ -1,6 +1,12 @@
+
 import cv2
+import sys, os
 
 from HandTrackingModuleWindows import HandDetector
+
+sys.path.append(os.path.dirname(os.path.abspath("utilities")))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath("utilities")), 'utilities'))
+
 import utilities.selfie as s
 import utilities.volume as v
 import utilities.brightness as b
@@ -105,6 +111,7 @@ def main(cap, detector):
 
 
 
-if __name__ =="__main__": 
+if __name__ !="__main__": 
     main(cap, detector)
+
 
