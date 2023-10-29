@@ -1,15 +1,15 @@
 import cv2
 
 from HandTrackingModuleWindows import HandDetector
-import selfie as s
-import volume as v
-import brightness as b
-import space_keystroke as t
-import scrolling as sc
-import functions as f 
-import activate_mouse as m
+import utilities.selfie as s
+import utilities.volume as v
+import utilities.brightness as b
+import utilities.space_keystroke as t
+import utilities.scrolling as sc
+import utilities.functions as f 
+import utilities.activate_mouse as m
 import time 
-import window as win
+import utilities.window as win
 import platform as pl
 
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
