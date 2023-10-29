@@ -30,6 +30,7 @@ showHand=True
 timer=time.time()    
 timer_click=time.time()
 timer_selfie=time.time()
+timer_volume=time.time()
 detector = HandDetector(detectionCon=0.9,maxHands=1) 
 
 def main(cap, detector): 
@@ -65,7 +66,6 @@ def main(cap, detector):
                   
                 if hands[0]["type"]=="Right": 
             
-                    
                   t.space_keystroke(img, fingers_up)
                       
                   sc.scrolling(img, fingers_up)
