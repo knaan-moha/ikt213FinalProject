@@ -49,10 +49,10 @@ def main(cap, detector):
           k= cv2.waitKey(1)
       
           if hands:   
-              hand = hands[0]
-              fingers_up = detector.fingersUp(hand)  
-              lmList=hand["lmList"]
-              x, y, w, h = hand["bbox"]
+              detected_hand = hands[0]
+              fingers_up = detector.fingersUp(detected_hand)  
+              lmList=detected_hand["lmList"]
+              x, y, w, h = detected_hand["bbox"]
             
               if len(hands)==1:          
                 if hands[0]["type"]=="Left":  
