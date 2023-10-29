@@ -1,12 +1,14 @@
 import cv2
+import os,sys 
+
 from HandTrackingModuleWindows import HandDetector
-import HandTrackingModule as htm
 import numpy as np 
 import  pyautogui
 import time
-import HandTrackingModule as htm
+
 import main as m 
 import functions as f 
+
 smoothing  =  4; 
 frame_reduction = 100; 
 web_cam_width, web_cam_height = 640, 480; 

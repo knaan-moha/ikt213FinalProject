@@ -1,4 +1,3 @@
-
 import cv2
 
 def print_action(img, input):
