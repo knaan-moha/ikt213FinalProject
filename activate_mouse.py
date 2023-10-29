@@ -72,6 +72,6 @@ def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y):
                             m.timer_click=time.time()
                         elif length<35 and time.time()-m.timer_click<3: 
                             
-                            f.print_action(img, "Click will be available in: "+f'{4-(time.time()-m.timer_click):.0f}')
+                            f.print_action(img, "Click will be available in: "+str(4-(time.time()-m.timer_click))[0])
                         
       
