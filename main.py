@@ -86,9 +86,7 @@ def main(cap, detector):
             # if the detected hand is the right hand 
             if hands[0]["type"]=="Right": 
               
-                
-           
-
+              
                 t.space_keystroke(img, fingers_up)
                   
                 sc.perform_scrolling(img, lmList, fingers_up)
