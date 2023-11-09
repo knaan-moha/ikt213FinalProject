@@ -34,4 +34,4 @@ def activate_selfie(img, fingers_up):
         return True        
         
 
-print("i am here")
+
