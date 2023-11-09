@@ -20,7 +20,7 @@ def perform_scrolling(img, lmList,fingers_up):
                                 
                                 f.print_action(img, "Scrolling Down")
                                 pyautogui.scroll(-3)
-    elif (fingers_up[0] == 1) and sum(fingers_up[1:]) == 0:
+    elif (fingers_up[0] == 1):
         if get_thumb_direction_pointing_right: 
             f.print_action(img, "Scrolling right")
             pyautogui.hscroll(3);

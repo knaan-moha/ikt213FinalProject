@@ -20,9 +20,9 @@ def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y):
      :param img: Image where the hand is detected.
      :param hand_img: Image of the detected hand.
      :param detector: Instance of Hand Detector class.
-     :param: fingers_up: Number of raised fingers.
-     :param: prev_loc_x: Previous x location of the cursor.
-     :param: prev_loc_y: Previous y location of the cursor.
+     :param fingers_up: Number of raised fingers.
+     :param prev_loc_x: Previous x location of the cursor.
+     :param prev_loc_y: Previous y location of the cursor.
 
     """
     

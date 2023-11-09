@@ -5,16 +5,16 @@ import functions as f
 # https://github.com/cvzone/cvzone
 
 import platform 
-def control_brightness(img, detector, lmList, finger_up):
+def control_brightness(img, detector, lmList, fingers_up):
     """
      Performs brigthness control.
      :param img: Frame for displaying the invoked command (i.e. brightness percentage).
      :param detector: Instance of Hand Detector class.
-     :lmList: List of detected hand landmarks. 
+     :param lmList: List of detected hand landmarks. 
      :param fingers_up: Number of raised fingers.
      """
      
-    if finger_up==[1, 1, 0, 0, 0] and platform.system()=="Windows":    
+    if fingers_up==[1, 1, 0, 0, 0] and platform.system()=="Windows":    
         length, info, img = detector.findDistance(lmList[4][0:2], lmList[8][0:2], img, color=(255, 0, 255),
                                                     scale=10)
        
