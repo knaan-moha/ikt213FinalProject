@@ -1,5 +1,5 @@
 import cv2
-import os,sys 
+
 
 from HandTrackingModuleWindows import HandDetector
 import numpy as np 

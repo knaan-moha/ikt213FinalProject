@@ -1,4 +1,3 @@
-import cv2
 import pyautogui
 import functions as f
 
@@ -6,6 +5,7 @@ def perform_scrolling(img, lmList,fingers_up):
     """
      Performs scrolling up and down
      :param img: Frame for displaying the invoked command (i.e. scolling up or down).
+     :param lmList: List of detected hand landmarks.
      :param fingers_up: Number of raised fingers.
      """
     

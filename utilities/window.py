@@ -1,5 +1,3 @@
-import sys, os
-
 import pyautogui
 import platform
 import functions as f 

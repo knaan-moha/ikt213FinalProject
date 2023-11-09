@@ -1,4 +1,3 @@
-import cv2 
 import pyautogui
 
 import functions as f
