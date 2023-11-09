@@ -7,8 +7,6 @@ from HandTrackingModuleWindows import HandDetector
 sys.path.append(os.path.dirname(os.path.abspath("utilities")))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath("utilities")), 'utilities'))
 
-#sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), "utilities"))
-
 
 import utilities.selfie as s
 import utilities.volume as v
@@ -19,7 +17,7 @@ import utilities.functions as f
 import utilities.activate_mouse as m
 import time 
 import utilities.window as win
-import platform as pl
+
 
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
 # https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python
@@ -74,7 +72,7 @@ def main(cap, detector):
             fingers_up = detector.fingersUp(detected_hand)  
             # get the hand landmarks associated with the detected hand 
             lmList=detected_hand["lmList"]
-            x, y, w, h = detected_hand["bbox"]
+           
             
             # If the detected hand is the left hand 
             if hands[0]["type"]=="Left":  

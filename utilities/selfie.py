@@ -1,7 +1,6 @@
 
 import cv2
 import time
-import sys, os
 import functions as f 
 import main as m 
 
@@ -34,4 +33,4 @@ def activate_selfie(img, fingers_up):
         return True        
         
 
-print("i am here")
+
