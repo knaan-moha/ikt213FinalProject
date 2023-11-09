@@ -10,7 +10,6 @@ def space_keystroke(img, fingers_up):
      :param fingers_up: Number of raised fingers.
     """
 
-    if fingers_up.count(1) == 5:
 
         f.print_action(img, 'Space keystroke')
         pyautogui.press('space', presses=1)

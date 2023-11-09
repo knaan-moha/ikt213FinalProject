@@ -85,10 +85,18 @@ def main(cap, detector):
     
             # if the detected hand is the right hand 
             if hands[0]["type"]=="Right": 
+              
+                
+                # Thumb tip landmarks point to right
+                thumb_tips_right = lmList[1]  
+                thumb_base_right= lmList[5]
+                # Thumb tip landmarks point to lef
+                thumb_tips_left = lmList[5]
+                thumb_base_left = lmList[1]
 
                 t.space_keystroke(img, fingers_up)
-                    
-                sc.perform_scrolling(img, lmList,fingers_up)
+                  
+                sc.perform_scrolling(img, fingers_up, thumb_tips_right, thumb_base_right, thumb_tips_left, thumb_base_left)
                 
                 win.manage_window(img, fingers_up)
             
