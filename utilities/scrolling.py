@@ -23,12 +23,12 @@ def perform_scrolling(img, lmList, fingers_up ):
     
 
          
-        if lmList[5][1] < lmList[6][1]:
+        if lmList[5][1] < lmList[6][1] and  lmList[17][1] < lmList[18][1]:
             f.print_action(img, "Scrolling left")
             pyautogui.hscroll(20);
             
         # for the right direction
-        elif lmList[5][1] > lmList[6][1]:
+        elif lmList[5][1] > lmList[6][1] and  lmList[17][1] > lmList[18][1]:
             f.print_action(img, "Scrolling right")
             pyautogui.hscroll(-20);
 
