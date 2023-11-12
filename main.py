@@ -65,7 +65,7 @@ def main(cap, detector):
         #   find hands and draw the bouding box
           hands, hand_img = detector.findHands(img, draw=showBBox , flipType=True)
           k= cv2.waitKey(1)
-        #   if hand is detected 
+        #   if hand is detected   
           if hands:   
             detected_hand = hands[0]
             # get the number of raised fingers 
@@ -84,7 +84,7 @@ def main(cap, detector):
                 b.control_brightness(img, detector, lmList, fingers_up)
     
             # if the detected hand is the right hand 
-            if hands[0]["type"]=="Right": 
+            elif hands[0]["type"]=="Right": 
               
               
                 t.space_keystroke(img, fingers_up)
