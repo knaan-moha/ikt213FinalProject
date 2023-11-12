@@ -37,16 +37,16 @@ def control_volume(img, fingers_up):
             
     if  fingers_up==[0, 1, 0, 0, 1] and time.time()-m.timer_volume>=3:
         
-        
-        time_remaining = 4 - (time.time() - m.timer_volume)
-        f.print_action(img, f"Mute/Unmute function available in {time_remaining:.1f} seconds")
 
         if platform.system()=="Windows":
             f.print_action(img, "Mute/Unmute Volume")  
             pyautogui.press('volumemute', presses=1)
-            m.timer_volume=time.time()
+           
     
         elif platform.system()=="Darwin":
             f.print_action(img, "Mute/Unmute Volume")  
             subprocess.run(['osascript', '-e', 'set volume output volume 0'])
-
+        m.timer_volume=time.time()
+    elif fingers_up==[0, 1, 0, 0, 1] and time.time()-m.timer_volume<3:
+         time_remaining = 4 - (time.time() - m.timer_volume)
+         f.print_action(img, f"Mute/Unmute function available in {str(time_remaining)[0]} seconds")
