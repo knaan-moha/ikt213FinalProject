@@ -30,6 +30,7 @@ def activate_selfie(img, fingers_up):
             f.print_action(img, "Selfie in "+str(4-(time.time()-m.timer_selfie))[0])
             return False 
     else: 
+        m.timer_selfie =time.time()
         return True        
         
 
