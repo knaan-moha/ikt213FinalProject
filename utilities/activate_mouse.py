@@ -1,6 +1,4 @@
 import cv2
-
-
 from HandTrackingModuleWindows import HandDetector
 import numpy as np 
 import  pyautogui
@@ -8,6 +6,7 @@ import time
 
 import main as m 
 import functions as f 
+pyautogui.FAILSAFE = False
 
 smoothing  =  4; 
 frame_reduction = 100; 
