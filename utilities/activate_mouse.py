@@ -10,7 +10,7 @@ pyautogui.FAILSAFE = False
 
 smoothing  =  4; 
 frame_reduction = 100; 
-web_cam_width, web_cam_height = 1280, 720; 
+web_cam_width, web_cam_height = 640, 480; 
 screen_width, screen_height = pyautogui.size(); 
 
 def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y): 
