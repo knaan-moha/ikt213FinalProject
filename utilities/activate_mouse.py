@@ -8,6 +8,7 @@ import main as m
 import functions as f 
 pyautogui.FAILSAFE = False
 # https://www.youtube.com/watch?v=8gPONnGIPgw&t=460s
+# https://www.investopedia.com/terms/i/interpolation.asp#:~:text=Interpolation%20is%20a%20mathematical%20technique,helps%20fill%20in%20the%20blanks.
 
 smoothing  =  4; 
 frame_reduction = 100; 
