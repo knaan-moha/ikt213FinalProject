@@ -87,7 +87,7 @@ def main(cap, detector):
             elif hands[0]["type"]=="Right": 
               
               
-                t.space_keystroke(img, fingers_up)
+                t.space_keystroke(img, lmList, fingers_up)
                   
                 sc.perform_scrolling(img, lmList, fingers_up)
                 
