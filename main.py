@@ -22,6 +22,10 @@ import utilities.window as win
 # https://www.geeksforgeeks.org/python-opencv-selectroi-function/
 # https://stackoverflow.com/questions/15589517/how-to-crop-an-image-in-opencv-using-python
 cap = cv2.VideoCapture(0)
+# https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-set
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, m.web_cam_width); 
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, m.web_cam_height)
+
 
 
 # variables used to store the current location of the cursor 
@@ -29,12 +33,8 @@ current_x, current_y = 0,  0;
 # variables uses to store the previous location of the cursor 
 prev_loc_x, prev_loc_y = 0, 0; 
 
-
-
 prev_frame_time = 0; 
 
-cap.set(3, m.web_cam_width); 
-cap.set(4, m.web_cam_height)
 
 # boolean to display the boudning box of the hand 
 showBBox =True
