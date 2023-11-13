@@ -7,6 +7,7 @@ import time
 import main as m 
 import functions as f 
 pyautogui.FAILSAFE = False
+# https://www.youtube.com/watch?v=8gPONnGIPgw&t=460s
 
 smoothing  =  4; 
 frame_reduction = 100; 
@@ -40,12 +41,12 @@ def activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y):
             cv2.rectangle(img, (frame_reduction, frame_reduction), (web_cam_width-frame_reduction, web_cam_height- frame_reduction), (0, 128, 0), 3)
 
             # Convert the coordinates
-            x3 = np.interp(finger_index_tip_x, (frame_reduction, web_cam_width-frame_reduction), (0, screen_width))
-            y3 = np.interp(finger_index_tip_y, (frame_reduction, web_cam_height-frame_reduction), (0, screen_height))
+            converted_x_coordinate = np.interp(finger_index_tip_x, (frame_reduction, web_cam_width-frame_reduction), (0, screen_width))
+            converted_y_coordinate = np.interp(finger_index_tip_y, (frame_reduction, web_cam_height-frame_reduction), (0, screen_height))
 
             # smoothing mouse movements 
-            current_x = prev_loc_x +(x3 -prev_loc_x)/smoothing
-            current_y = prev_loc_y +(y3 -prev_loc_y)/smoothing
+            current_x = prev_loc_x +(converted_x_coordinate -prev_loc_x)/smoothing
+            current_y = prev_loc_y +(converted_y_coordinate -prev_loc_y)/smoothing
 
             # Move the mouse cursor to the new coordinates
 
