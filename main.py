@@ -1,9 +1,10 @@
 
 import cv2
 import sys, os
-
 from HandTrackingModuleWindows import HandDetector
 
+# storing the path of the utilities folder in the system path 
+# so that the files in the utilities folder can be used in main.py
 sys.path.append(os.path.dirname(os.path.abspath("utilities")))
 sys.path.append(os.path.join(os.path.dirname(os.path.abspath("utilities")), 'utilities'))
 
@@ -33,13 +34,14 @@ current_x, current_y = 0,  0;
 # variables uses to store the previous location of the cursor 
 prev_loc_x, prev_loc_y = 0, 0; 
 
+# the time of the previous time (used in the beginning)
 prev_frame_time = 0; 
 
 
 # boolean to display the boudning box of the hand 
 showBBox =True
 
-#timers used for countdowns to avoid redundant activation of the invoked commands 
+#timers used for count ups to avoid redundant activation of the invoked commands 
 timer_window=time.time()    
 timer_click=time.time()
 timer_selfie=time.time()
@@ -56,16 +58,17 @@ def main(cap, detector):
       global prev_frame_time
       global showBBox 
       global timer_window, timer_click, timer_selfie, timer_volume
+      # the variable used to hide and display the boudnif box of the detected hand 
       showBBox =True            
       
        
       while True: 
          
           _, img = cap.read()
-        #   find hands and draw the bouding box
+        #  find hands and draw the bouding box
           hands, hand_img = detector.findHands(img, draw=showBBox , flipType=True)
           k= cv2.waitKey(1)
-        #   if hand is detected   
+        #  if hand is detected   
           if hands:   
             detected_hand = hands[0]
             # get the number of raised fingers 
@@ -76,29 +79,30 @@ def main(cap, detector):
             
             # If the detected hand is the left hand 
             if hands[0]["type"]=="Left":  
-                                            
+            # activate_selfie returns False if a selfie is being taken
+            # otherwisem returns True  
                 showBBox =s.activate_selfie(img, fingers_up)
-            
+            # volume control function:
                 v.control_volume(img, fingers_up) 
-                
+            #  brightness control function
                 b.control_brightness(img, detector, lmList, fingers_up)
     
             # if the detected hand is the right hand 
             elif hands[0]["type"]=="Right": 
               
-              
+            # space keystroke 
                 t.space_keystroke(img, lmList, fingers_up)
-                  
+            # scrolling function 
                 sc.perform_scrolling(img, lmList, fingers_up)
-                
+            # window management function
                 win.manage_window(img, fingers_up)
-            
+            # cursor control function tht returns the "saved" coordinates of the cursor 
                 coordinates = m.activate_mouse(img, hand_img, detector, fingers_up, prev_loc_x, prev_loc_y)
                 if coordinates is not None:
                     # store the cursor coordinates 
                     prev_loc_x, prev_loc_y = coordinates
                         
-           
+          # calculating fps:  
           current_frame_time = time.time();   
           f.get_fps(img, current_frame_time,
                     prev_frame_time) 
