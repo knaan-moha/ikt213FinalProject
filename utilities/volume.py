@@ -49,4 +49,4 @@ def control_volume(img, fingers_up):
         m.timer_volume=time.time()
     elif fingers_up==[0, 1, 0, 0, 1] and time.time()-m.timer_volume<3:
          time_remaining = 4 - (time.time() - m.timer_volume)
-         f.print_action(img, f"Mute/Unmute function available in {str(time_remaining)[0]} seconds")
+         f.print_action(img, f"Mute/Unmute available in {str(time_remaining)[0]} seconds")
