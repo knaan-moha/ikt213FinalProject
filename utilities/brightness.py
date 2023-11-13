@@ -6,20 +6,25 @@ import subprocess
 import platform 
 # https://github.com/cvzone/cvzone
 
-import platform 
+
 def control_brightness(img, detector, lmList, fingers_up):
     """
      Performs brigthness control.
-     :param img: Frame for displaying the invoked command (i.e. brightness percentage).
+     :param img: Frame for displaying the invoked command (i.e. brightness percentage, increasing/decreasing brightness).
      :param detector: Instance of Hand Detector class.
      :param lmList: List of detected hand landmarks. 
      :param fingers_up: Number of raised fingers.
      """
      
-    if fingers_up==[1, 1, 0, 0, 0]:    
+    if fingers_up==[1, 1, 0, 0, 0]:  
+        # find the distance between the tip of the index finger (i.e. landmark nr 8)
+        # and the tip of the thumb (i.e. landmark nr 4)  
         length, _, img = detector.findDistance(lmList[4][0:2], lmList[8][0:2], img, color=(255, 0, 255),
                                                     scale=10)    
+        # if the code is running of windows
         if platform.system()== "Windows":      
+            # set the brightness to a certain value 
+            # depending on the distance between the tip of the index finger and thumb
             if (length>360): 
                 f.print_action(img, "Brightness: 100 ")
                 sbc.set_brightness(100, display=0)
@@ -51,8 +56,10 @@ def control_brightness(img, detector, lmList, fingers_up):
                 f.print_action(img, "Brightness: 10 ")
                 sbc.set_brightness(10, display=0)
             
-        
+        # if the code is running on macOS
         elif platform.system()=="Darwin":
+                # either increase or decrease brightness 
+                # depending on the distance between the tip of the index finger and thumb 
                 
                 if 360>length and 100<=length: 
                         f.print_action(img, "Increasing Brightness")
