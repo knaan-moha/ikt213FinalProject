@@ -33,8 +33,8 @@ prev_loc_x, prev_loc_y = 0, 0;
 
 prev_frame_time = 0; 
 
-cap.set(3, 640); 
-cap.set(4, 480)
+cap.set(3, m.web_cam_width); 
+cap.set(4, m.web_cam_height)
 
 # boolean to display the boudning box of the hand 
 showBBox =True
