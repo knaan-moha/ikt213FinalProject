@@ -10,7 +10,7 @@ import main as m
 import functions as f 
 
 smoothing  =  4; 
-frame_reduction = 100; 
+frame_reduction = 1; 
 web_cam_width, web_cam_height = 640, 480; 
 screen_width, screen_height = pyautogui.size(); 
 
