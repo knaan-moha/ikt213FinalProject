@@ -50,21 +50,17 @@ def control_brightness(img, detector, lmList, fingers_up):
             elif (length<=40 and length>0): 
                 f.print_action(img, "Brightness: 10 ")
                 sbc.set_brightness(10, display=0)
-            else: 
-                cv2.putText(img, str(length), (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
+            
         
         elif platform.system()=="Darwin":
                 
-                if length>360 and length<50: 
-                        f.print_action(img, "Brightness: 100 ")
-                        subprocess.run(['osascript', '-e', 'tell application "System Events"', '-e', 'key code 113', '-e', 'end tell'])
+                if 360>length and 100<=length: 
+                        f.print_action(img, "Increasing Brightness")
+                        subprocess.run(['osascript', '-e', 'tell application "System Events"', '-e', 'key code 144', '-e', 'end tell'])
             
-                elif length>=50 and length<0: 
-                        f.print_action(img, "Brightness: 10 ")
+                elif length<100 and length>0: 
+                        f.print_action(img, "Decreasing Brightness")
                         subprocess.run(['osascript', '-e', 'tell application "System Events"', '-e', 'key code 145', '-e', 'end tell'])
-                else: 
-                        cv2.putText(img, str(length), (20, 460), cv2.FONT_HERSHEY_COMPLEX, 1, (255,255,255), 2, cv2.LINE_AA)
-                
                 
         
                        
