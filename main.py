@@ -80,7 +80,7 @@ def main(cap, detector):
             # If the detected hand is the left hand 
             if hands[0]["type"]=="Left":  
             # activate_selfie returns False if a selfie is being taken
-            # otherwisem returns True  
+            # otherwise returns True  
                 showBBox =s.activate_selfie(img, fingers_up)
             # volume control function:
                 v.control_volume(img, fingers_up) 
