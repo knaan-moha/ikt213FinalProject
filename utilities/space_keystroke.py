@@ -10,7 +10,7 @@ def space_keystroke(img, lmList, fingers_up):
      :param fingers_up: Number of raised fingers.
     """
     
-  
+    # check if all the 5 fingers are raised 
     if fingers_up.count(1) == 5 and lmList[6][1]<lmList[0][1]:
 
         f.print_action(img, 'Space keystroke')
